@@ -1,0 +1,375 @@
+{
+  "title": "掺烧试验中的证据放行与运行边界",
+  "encoding": "UTF-8",
+  "delimiter": ",",
+  "missing": "",
+  "synthetic": true,
+  "tables": [
+    {
+      "name": "boilers",
+      "description": "合成炉组及前序影响范围。",
+      "columns": [
+        {
+          "name": "boiler_id",
+          "type": "string",
+          "description": "炉组",
+          "nullable": true
+        },
+        {
+          "name": "capacity_tph",
+          "type": "number",
+          "description": "额定蒸汽吨每小时",
+          "nullable": true
+        },
+        {
+          "name": "carry_window_shifts",
+          "type": "integer",
+          "description": "前序影响检查范围",
+          "nullable": true
+        }
+      ],
+      "key": [
+        "boiler_id"
+      ],
+      "references": [],
+      "path": "data/boilers.csv",
+      "row_count": 4,
+      "sha256": "c41ec3f9957522c0b91fbe91c2ec84eb0e509972ab677b6ee67b96fd272539b1"
+    },
+    {
+      "name": "plans",
+      "description": "已登记的炉组交叉安排。",
+      "columns": [
+        {
+          "name": "shift_id",
+          "type": "string",
+          "description": "班次",
+          "nullable": true
+        },
+        {
+          "name": "boiler_id",
+          "type": "string",
+          "description": "炉组",
+          "nullable": true
+        },
+        {
+          "name": "start",
+          "type": "datetime",
+          "description": "开始时刻",
+          "nullable": true
+        },
+        {
+          "name": "treatment",
+          "type": "number",
+          "description": "计划热量替代比",
+          "nullable": true
+        },
+        {
+          "name": "planned_load",
+          "type": "number",
+          "description": "计划负荷",
+          "nullable": true
+        },
+        {
+          "name": "coal_grade",
+          "type": "string",
+          "description": "煤种",
+          "nullable": true
+        },
+        {
+          "name": "registered_at",
+          "type": "datetime",
+          "description": "登记时刻",
+          "nullable": true
+        },
+        {
+          "name": "available_at",
+          "type": "datetime",
+          "description": "可知时刻",
+          "nullable": true
+        }
+      ],
+      "key": [
+        "shift_id"
+      ],
+      "references": [
+        {
+          "column": "boiler_id",
+          "target_table": "boilers",
+          "target_column": "boiler_id"
+        }
+      ],
+      "path": "data/plans.csv",
+      "row_count": 96,
+      "sha256": "4e5485278aa2068e4459d5a87f548ab239a6b6f5cd3e0d7c55a9167271ddb1d8"
+    },
+    {
+      "name": "readings",
+      "description": "测点保留实际执行与安全结局。",
+      "columns": [
+        {
+          "name": "reading_id",
+          "type": "string",
+          "description": "测点",
+          "nullable": true
+        },
+        {
+          "name": "shift_id",
+          "type": "string",
+          "description": "班次",
+          "nullable": true
+        },
+        {
+          "name": "within_shift",
+          "type": "integer",
+          "description": "班次内顺序",
+          "nullable": true
+        },
+        {
+          "name": "actual_ratio",
+          "type": "number",
+          "description": "执行替代比",
+          "nullable": true
+        },
+        {
+          "name": "moisture_pct",
+          "type": "number",
+          "description": "含水率百分数",
+          "nullable": true
+        },
+        {
+          "name": "coal_per_steam",
+          "type": "number",
+          "description": "单位蒸汽煤耗千克每吨",
+          "nullable": true
+        },
+        {
+          "name": "steam_tph",
+          "type": "number",
+          "description": "蒸汽吨每小时",
+          "nullable": true
+        },
+        {
+          "name": "emission_mg",
+          "type": "number",
+          "description": "排放毫克每立方米",
+          "nullable": true
+        },
+        {
+          "name": "emission_breach",
+          "type": "boolean",
+          "description": "越限",
+          "nullable": true
+        },
+        {
+          "name": "steam_shortfall",
+          "type": "boolean",
+          "description": "供汽不足",
+          "nullable": true
+        },
+        {
+          "name": "available_at",
+          "type": "datetime",
+          "description": "可知时刻",
+          "nullable": true
+        },
+        {
+          "name": "actual_load",
+          "type": "number",
+          "description": "实际负荷",
+          "nullable": true
+        }
+      ],
+      "key": [
+        "reading_id"
+      ],
+      "references": [
+        {
+          "column": "shift_id",
+          "target_table": "plans",
+          "target_column": "shift_id"
+        }
+      ],
+      "path": "data/readings.csv",
+      "row_count": 384,
+      "sha256": "66655cab3cbc8028d4635462bcfa2bd4d5b8193038844aac8dbf1405e138bc87"
+    },
+    {
+      "name": "deviations",
+      "description": "安全停试记录及产生原因，不删除原安排。",
+      "columns": [
+        {
+          "name": "event_id",
+          "type": "string",
+          "description": "记录",
+          "nullable": true
+        },
+        {
+          "name": "shift_id",
+          "type": "string",
+          "description": "班次",
+          "nullable": true
+        },
+        {
+          "name": "kind",
+          "type": "string",
+          "description": "偏离类型",
+          "nullable": true
+        },
+        {
+          "name": "reason",
+          "type": "string",
+          "description": "原因",
+          "nullable": true
+        },
+        {
+          "name": "occurred_at",
+          "type": "datetime",
+          "description": "发生时刻",
+          "nullable": true
+        },
+        {
+          "name": "available_at",
+          "type": "datetime",
+          "description": "可知时刻",
+          "nullable": true
+        }
+      ],
+      "key": [
+        "event_id"
+      ],
+      "references": [
+        {
+          "column": "shift_id",
+          "target_table": "plans",
+          "target_column": "shift_id"
+        }
+      ],
+      "path": "data/deviations.csv",
+      "row_count": 3,
+      "sha256": "abbe4189b868dfafbb8a2c8ac576fbf1c9a636b7143acccd664772f100ba4974"
+    },
+    {
+      "name": "reviews",
+      "description": "分析者事先登记的声明范围与查看计划。主要指标 coal_per_steam，风险为两类不利事件。",
+      "columns": [
+        {
+          "name": "review_id",
+          "type": "string",
+          "description": "登记",
+          "nullable": true
+        },
+        {
+          "name": "registered_at",
+          "type": "datetime",
+          "description": "登记时间",
+          "nullable": true
+        },
+        {
+          "name": "look_days",
+          "type": "string",
+          "description": "计划查看日以分号分隔",
+          "nullable": true
+        },
+        {
+          "name": "effect_target",
+          "type": "number",
+          "description": "期望煤耗差上界",
+          "nullable": true
+        },
+        {
+          "name": "emission_risk_limit",
+          "type": "number",
+          "description": "越限率上界",
+          "nullable": true
+        },
+        {
+          "name": "steam_risk_limit",
+          "type": "number",
+          "description": "不足率上界",
+          "nullable": true
+        },
+        {
+          "name": "load_min",
+          "type": "number",
+          "description": "负荷下界",
+          "nullable": true
+        },
+        {
+          "name": "load_max",
+          "type": "number",
+          "description": "负荷上界",
+          "nullable": true
+        }
+      ],
+      "key": [
+        "review_id"
+      ],
+      "references": [],
+      "path": "data/reviews.csv",
+      "row_count": 1,
+      "sha256": "f4a553f49996756f64e1eab3ed48a1c9985aae44a7b9a0722b7ee4e9f8ec59f2"
+    },
+    {
+      "name": "next_trials",
+      "description": "用以继续交接的业务请求，不包含批准结论。",
+      "columns": [
+        {
+          "name": "request_id",
+          "type": "string",
+          "description": "请求",
+          "nullable": true
+        },
+        {
+          "name": "boiler_id",
+          "type": "string",
+          "description": "炉组",
+          "nullable": true
+        },
+        {
+          "name": "ratio",
+          "type": "number",
+          "description": "拟掺比",
+          "nullable": true
+        },
+        {
+          "name": "load",
+          "type": "number",
+          "description": "拟负荷",
+          "nullable": true
+        },
+        {
+          "name": "coal_grade",
+          "type": "string",
+          "description": "煤种",
+          "nullable": true
+        },
+        {
+          "name": "moisture_pct",
+          "type": "number",
+          "description": "拟含水率",
+          "nullable": true
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "description": "执行状态",
+          "nullable": true
+        },
+        {
+          "name": "start",
+          "type": "datetime",
+          "description": "预定开始",
+          "nullable": true
+        }
+      ],
+      "key": [
+        "request_id"
+      ],
+      "references": [],
+      "path": "data/next_trials.csv",
+      "row_count": 3,
+      "sha256": "90b5200fcb238f36dfbb471cad4059b0b201bc914db92fc9f92aed7776e02e40"
+    }
+  ]
+}

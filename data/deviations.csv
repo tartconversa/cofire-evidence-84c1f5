@@ -1,0 +1,4 @@
+event_id,shift_id,kind,reason,occurred_at,available_at
+E0,S002,safety_stop,emission_limit,2025-01-06T12:00:00+08:00,2025-01-07T08:00:00+08:00
+E11,S112,safety_stop,emission_limit,2025-01-17T12:00:00+08:00,2025-01-18T08:00:00+08:00
+E22,S222,safety_stop,emission_limit,2025-01-28T12:00:00+08:00,2025-01-29T08:00:00+08:00
