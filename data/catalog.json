@@ -34,7 +34,7 @@
       "references": [],
       "path": "data/boilers.csv",
       "row_count": 4,
-      "sha256": "c41ec3f9957522c0b91fbe91c2ec84eb0e509972ab677b6ee67b96fd272539b1"
+      "sha256": "88195480844a5f22a10452ae2653dadd0455be46241b05ac68e721201ad028fb"
     },
     {
       "name": "plans",
@@ -101,7 +101,7 @@
       ],
       "path": "data/plans.csv",
       "row_count": 96,
-      "sha256": "4e5485278aa2068e4459d5a87f548ab239a6b6f5cd3e0d7c55a9167271ddb1d8"
+      "sha256": "c1dabcc19d95f8bdbfe82fcadc056979f6a656c79367ebf00eb81faf474f1a75"
     },
     {
       "name": "readings",
@@ -192,7 +192,7 @@
       ],
       "path": "data/readings.csv",
       "row_count": 384,
-      "sha256": "66655cab3cbc8028d4635462bcfa2bd4d5b8193038844aac8dbf1405e138bc87"
+      "sha256": "e8c297b74cf71ecb2f6887c404c4a54c1a2c236dc9941f830c080dee4429cc41"
     },
     {
       "name": "deviations",
@@ -247,7 +247,7 @@
       ],
       "path": "data/deviations.csv",
       "row_count": 3,
-      "sha256": "abbe4189b868dfafbb8a2c8ac576fbf1c9a636b7143acccd664772f100ba4974"
+      "sha256": "bb58623fdf3631cf25a2ac50a1da82366215c94729578b99341d6926db919426"
     },
     {
       "name": "reviews",
@@ -308,7 +308,7 @@
       "references": [],
       "path": "data/reviews.csv",
       "row_count": 1,
-      "sha256": "f4a553f49996756f64e1eab3ed48a1c9985aae44a7b9a0722b7ee4e9f8ec59f2"
+      "sha256": "17075f0f2afa0d94e31be207219813350d848757d288638d2c012ba6bb80009a"
     },
     {
       "name": "next_trials",
@@ -369,7 +369,7 @@
       "references": [],
       "path": "data/next_trials.csv",
       "row_count": 3,
-      "sha256": "90b5200fcb238f36dfbb471cad4059b0b201bc914db92fc9f92aed7776e02e40"
+      "sha256": "322d1590fb9d853f945affa9e19ba22474ff032a423d0ca4e36e0bb153412bfd"
     }
   ]
 }
